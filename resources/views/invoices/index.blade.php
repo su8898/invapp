@@ -5,7 +5,6 @@
         </h2>
     </x-slot>
 
-
     <div class="pt-6 text-left">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="text-left">
@@ -18,28 +17,52 @@
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                <tr class="text-left">
+                                <tr class="">
                                     <th scope="col" class="px-6 py-3 text-left">
-                                        <div class="py-3">Invoice #</div>
+                                        Invoice #
                                     </th>
-                                    <td scope="col" class="px-6 py-3">
+                                    <th scope="col" class="px-6 py-3">
                                         Date
-                                    </td>
-                                    <td scope="col" class="px-6 py-3">
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
                                         Customer
-                                    </td>
-                                    <td scope="col" class="px-6 py-3">
+                                    </th>
+                                    <th scope="col" class="px-6 py-4 text-right">
                                         Net Amount
-                                    </td>
-                                    <td scope="col" class="px-6 py-3">
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
                                         Action
-                                    </td>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
-                               
+                                @foreach($invoices as $invoice)
+                                <tr class="bg-white dark:border-gray-700">
+                                    <td class="px-6 py-4">
+                                        {{ $invoice->invoice_no }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $invoice->invoice_date->format('Y-m-d') }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="{{ route('customers.show', $invoice->customer->id) }}" class="text-indigo-600 hover:text-indigo-900">
+                                            {{ $invoice->customer->company_name ?? 'N/A' }}
+                                        </a>
+                                    </td>
+                                     <td class="px-6 py-4 text-right">
+        {{ number_format($invoice->net_amt, 2) }}
+    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="{{ route('invoices.show', $invoice->id) }}" class="text-indigo-600 hover:text-indigo-900">View</a>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
+
+                    </div>
+                    <div class="mt-4">
+                        {{ $invoices->links() }} <!-- Pagination links -->
                     </div>
                 </div>
             </div>

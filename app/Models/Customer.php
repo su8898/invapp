@@ -12,4 +12,9 @@ class Customer extends Model
         'company_name',
         'email',
     ];
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }

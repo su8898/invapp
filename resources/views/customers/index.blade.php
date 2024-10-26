@@ -13,11 +13,20 @@
                     New Customer
                 </a>
             </div>
-            <div class="mt-6 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="mt-6  bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
+                    <!-- @if (session('status') === 'customer-updated')
+                        <p
+                            x-data="{ show: true }"
+                            x-show="show"
+                            x-transition
+                            x-init="setTimeout(() => show = false, 2000)"
+                            class="text-sm text-gray-600"
+                        >{{ __('Saved.') }}</p>
+                    @endif -->
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400">
                                 <tr class="text-left">
                                     <th scope="col" class="px-6 py-3 text-left">
                                         <div class="py-3">Company Name</div>
@@ -38,7 +47,7 @@
                             </thead>
                             <tbody>
                                 @foreach($customers as $customer)
-                                <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <tr class="">
                                     <td scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-left">
                                         {{ $customer->company_name }}                                             
                                     </td>
@@ -52,13 +61,16 @@
                                         {{ $customer->vat_no }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a href="{{ route('customers.edit', $customer->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                        <a href="{{ route('customers.show', $customer->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
+                     <div class="mt-4">
+                            {{ $customers->links() }} <!-- Pagination links -->
+                        </div>
                 </div>
             </div>
         </div>
