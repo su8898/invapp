@@ -48,12 +48,12 @@
                             <tbody>
                                 @forelse ($customer->invoices as $invoice)
                                 <tr>
-                                    <td class="border px-4 py-2">{{ $invoice->invoice_no }}</td>
-                                    <td class="border px-4 py-2">{{ $invoice->created_at->format('d-m-Y') }}</td>
-                                    <td class="border px-4 py-2 text-right">{{ number_format($invoice->gross_amt, 2) }}</td>
-                                    <td class="border px-4 py-2 text-right">{{ number_format($invoice->vat_amt, 2) }}</td>
-                                    <td class="border px-4 py-2 text-right">{{ number_format($invoice->net_amt, 2) }}</td>
-                                    <td class="border px-4 py-2">
+                                    <td class="px-4 py-2">{{ $invoice->invoice_no }}</td>
+                                    <td class="px-4 py-2">{{ $invoice->created_at->format('d-m-Y') }}</td>
+                                    <td class="px-4 py-2 text-right">{{ number_format($invoice->gross_amt, 2) }}</td>
+                                    <td class="px-4 py-2 text-right">{{ number_format($invoice->vat_amt, 2) }}</td>
+                                    <td class="px-4 py-2 text-right">{{ number_format($invoice->net_amt, 2) }}</td>
+                                    <td class="px-4 py-2">
                                         <a href="{{ route('invoices.show', $invoice->id) }}" class="text-indigo-600 hover:text-indigo-900">View</a>
                                     </td>
                                 </tr>
