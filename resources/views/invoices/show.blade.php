@@ -73,15 +73,15 @@
                             <div class=" p-0 rounded">
                                 <div class="flex">
                                     <p class="w-40 font-semibold">Gross Amount:</p>
-                                    <p class="text-right w-24 font-semibold rounded">${{ number_format($invoice->gross_amt, 2) }}</p>
+                                    <p class="text-right w-24 font-semibold rounded">€ {{ number_format($invoice->gross_amt, 2) }}</p>
                                 </div>
                                 <div class="flex">
                                     <p class="w-40 font-semibold">VAT Amount:</p>
-                                    <p class="text-right w-24 font-semibold rounded">${{ number_format($invoice->vat_amt, 2) }}</p>
+                                    <p class="text-right w-24 font-semibold rounded">€ {{ number_format($invoice->vat_amt, 2) }}</p>
                                 </div>
                                 <div class="flex">
                                     <p class="w-40 font-semibold">Net Amount:</p>
-                                    <p class="text-right w-24 font-semibold rounded">${{ number_format($invoice->net_amt, 2) }}</p>
+                                    <p class="text-right w-24 font-semibold rounded">€ {{ number_format($invoice->net_amt, 2) }}</p>
                                 </div>
                             </div>
                         </div>
@@ -109,11 +109,11 @@
                                 <tr class="bg-white border-b">
                                     <td class="px-6 py-4">{{ $item->particulars }}</td>
                                     <td class="px-6 py-4">{{ $item->qty }}</td>
-                                    <td class="px-6 py-4 text-right">${{ number_format($item->rate, 2) }}</td>
-                                    <td class="px-6 py-4 text-right">${{ number_format($item->amount, 2) }}</td>
+                                    <td class="px-6 py-4 text-right">€ {{ number_format($item->rate, 2) }}</td>
+                                    <td class="px-6 py-4 text-right">€ {{ number_format($item->amount, 2) }}</td>
                                     <td class="px-6 py-4 text-right">{{ $item->vat_perc }}%</td>
-                                    <td class="px-6 py-4 text-right">${{ number_format($item->vat, 2) }}</td>
-                                    <td class="px-6 py-4 text-right">${{ number_format($item->net, 2) }}</td>
+                                    <td class="px-6 py-4 text-right">€ {{ number_format($item->vat, 2) }}</td>
+                                    <td class="px-6 py-4 text-right">€ {{ number_format($item->net, 2) }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
